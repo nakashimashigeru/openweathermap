@@ -1,4 +1,4 @@
-<form [formGroup]="cityAddForm" (ngSubmit)="onSubmit()" cdkTrapFocus [cdkTrapFocusAutoCapture]="true" style="padding: 10px 0px 0px 10px;">
+<form [formGroup]="cityAddForm" (ngSubmit)="onSubmit()" cdkTrapFocus style="padding: 10px 0px 0px 10px;">
   <div *ngIf="cityAddForm.controls['name'].errors?.enterOnlySpaces; then thenBlock else elseBlock"></div>
   <div class="block">
     <ng-template #thenBlock>

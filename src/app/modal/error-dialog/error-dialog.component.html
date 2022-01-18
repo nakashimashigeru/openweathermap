@@ -1,0 +1,32 @@
+<div class="modal-content" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+  <div class="modal-header" style="background-color: rgb(220, 226, 238)">
+    <div class="container-fluid">
+      <div class="row" style="align-items: center; font-weight: bold;">
+        <div class="col-md-12">
+          <span name="title" class="modal-title pull-left">{{code}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row" style="align-items: center;">
+        <div class="col-md-2">
+          <i class="fa fa-exclamation-circle fa-3x" style="color: rgb(215, 0, 0);"></i>
+        </div>
+        <div class="col-md-10">
+          <span name="message" style="white-space: pre-line; color: rgb(215, 0, 0);">{{message}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer" style="border-top-style: none; border-top-width: medium;" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+          <button id="UNQ_sdeExtButtonOk" type="button" class="btn btn-primary btn-large rounded-pill" (click)="close()" tabindex="0">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

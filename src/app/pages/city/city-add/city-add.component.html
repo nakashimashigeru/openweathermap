@@ -1,0 +1,14 @@
+<form [formGroup]="cityAddForm" (ngSubmit)="onSubmit()" cdkTrapFocus [cdkTrapFocusAutoCapture]="true" style="padding: 10px 0px 0px 10px;">
+  <div *ngIf="cityAddForm.controls['name'].errors?.enterOnlySpaces; then thenBlock else elseBlock"></div>
+  <div class="block">
+    <ng-template #thenBlock>
+      <span class="thenBlock">都市名は空白のみでの入力はできません</span>
+    </ng-template>
+    <ng-template #elseBlock>
+      <span>都市名を入力して下さい</span>
+    </ng-template>
+  </div>
+  <input #prefectures id="prefectures" type="text" pInputText formControlName="name" (keydown.enter)="onKeydown($event)" placeholder="例：東京都">
+  <button pButton type="submit" label="追加" class="button" [disabled]="cityAddForm.invalid"></button>
+  <button pButton type="button" label="キャンセル" class="button ui-button-secondary" routerLink="/dashboard"></button>
+</form>

@@ -1,0 +1,20 @@
+body {
+  font-family: "Yu Gothic";
+}
+
+.btn-large {
+  min-width: 100px;
+}
+
+@media only screen and (max-width: 768px) {
+  .col-md-2, .col-md-10 {
+    position: relative;
+    width: 20%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .col-md-10 {
+    width: 80%;
+  }
+}

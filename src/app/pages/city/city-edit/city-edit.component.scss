@@ -1,0 +1,52 @@
+::ng-deep app-city-edit {
+  * {
+    box-sizing: border-box;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    text-decoration: none;
+    color: #333333;
+  }
+
+  .block {
+    margin-bottom: 8px;
+  }
+
+  .thenBlock {
+    color: #FF0000;
+  }
+
+  input#prefectures {
+    width: 235px;
+    height: 33px;
+  }
+
+  .button {
+    margin-left: 10px;
+  }
+
+  span.ui-button-text.ui-clickable {
+    width: 100px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  .ui-button-secondary {
+    span.ui-button-text.ui-clickable {
+      color: #333333;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    input#prefectures {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      margin-left: 0px;
+
+      &:last-child {
+        margin-left: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+$black: #2c2c2c;
+$white: #ffffff;
+
+$color-map: (
+  brand: (
+    color: #0e0c6a,
+    on: $white,
+    focus: (
+      color: #8e8db9,
+      on: $black,
+    ),
+  ),
+  primary: (
+    color: #06cfcf,
+    on: $black,
+    focus: (
+      color: #6ee3e3,
+      on: $black,
+    ),
+  ),
+  secondary: (
+    color: #ffd705,
+    on: $black,
+    focus: (
+      color: #ffe768,
+      on: $black,
+    ),
+  ),
+);
+
+@mixin font-color($color) {
+  color: map-get(map-get($color-map, $color), color);
+}
+
+@mixin background-color($background, $alpha: 1) {
+  color: map-get(map-get($color-map, $background), on);
+  background-color: rgba(map-get(map-get($color-map, $background), color), $alpha);
+}
+
+@mixin border-color($color, $px: 1px, $style: solid, $suffix: null, $alpha: 1) {
+  @if $suffix == top or $suffix == bottom or $suffix == left or $suffix == right {
+    border-#{$suffix}: $px $style rgba(map-get(map-get($color-map, $color), color), $alpha);
+  } @else if $suffix == null {
+    border: $px $style rgba(map-get(map-get($color-map, $color), color), $alpha);
+  }
+}
+
+@mixin background-color-focus($background) {
+  @include background-color($background);
+  &:focus,
+  &:hover {
+    $fmap: map-get(map-get($color-map, $background), focus);
+    color: map-get($fmap, on);
+    background-color: map-get($fmap, color);
+  }
+}

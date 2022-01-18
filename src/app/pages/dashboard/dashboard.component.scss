@@ -1,0 +1,74 @@
+::ng-deep app-dashboard {
+  * {
+    box-sizing: border-box;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    text-decoration: none;
+    color: #333333;
+  }
+
+  table {
+    text-align: center;
+    border-collapse: collapse;
+  }
+
+  th {
+    border: 1px solid #ffffff;
+    padding: 5px 10px;
+    color: #ffffff;
+    background-color: #696;
+  }
+
+  td {
+    border: 1px solid #ffffff;
+    padding: 5px 10px;
+    color: #363;
+    background-color: #e9e9e9;
+  }
+
+  .ui-table .ui-table-thead > tr > th {
+    color: #ffffff;
+    background-color: #696;
+
+    &:not(:last-child) {
+      border-right: 1px solid #ffffff;
+    }
+  }
+
+  .ui-table .ui-table-tbody > tr > td {
+    padding: 0px;
+    height: 36px;
+  }
+
+  .ui-dropdown.ui-widget.ui-state-default.ui-corner-all {
+    width: 235px;
+  }
+
+  .ui-dropdown-trigger.ui-state-default.ui-corner-right {
+    font-size: 13px;
+  }
+
+  .button {
+    margin-left: 10px;
+  }
+
+  span.ui-button-text.ui-clickable {
+    width: 100px;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .ui-table .ui-table-thead > tr > th {
+      &:nth-child(n+2):nth-child(-n+4) {
+        width: 15%;
+      }
+    }
+
+    .ui-table .ui-table-tbody > tr > td {
+      &:nth-child(n+2):nth-child(-n+4) {
+        width: 15%;
+      }
+    }
+  }
+}

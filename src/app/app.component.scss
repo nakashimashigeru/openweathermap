@@ -1,0 +1,5 @@
+@import "../../projects/shared-kaleid/src/lib/scss/kaleid.scss";
+
+.test {
+  @include background-color(brand);
+}

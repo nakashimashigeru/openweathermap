@@ -1,0 +1,39 @@
+::ng-deep app-menu {
+  * {
+    box-sizing: border-box;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    text-decoration: none;
+    color: #333333;
+    outline: none;
+  }
+
+  .menu {
+    background-color: #556B2F;
+  }
+
+  .menu ul {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .menu li {
+    padding: 4px 8px;
+    display: inline-block;
+
+    &:not(:last-child) {
+      border-right: 1px solid #ffffff;
+    }
+  }
+
+  .menu li a {
+    color: #ffffff;
+  }
+
+  .menu li a:hover {
+    color: #29088A;
+  }
+
+  .menu li a.active {
+    color: #29088A;
+  }
+}

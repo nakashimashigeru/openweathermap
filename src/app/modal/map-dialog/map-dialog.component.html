@@ -1,0 +1,30 @@
+<div class="modal-content" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+  <div class="modal-header" style="background-color: rgb(220, 226, 238)">
+    <div class="container-fluid">
+      <div class="row" style="align-items: center; font-weight: bold;">
+        <div class="col-md-6" style="text-align: left;">
+          <span class="modal-title pull-left">{{name}}</span>
+        </div>
+        <div class="col-md-6" style="text-align: right;">
+          <span class="modal-title pull-right" style="cursor: hand; cursor: pointer;" (click)="close()">✕</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div id="map" style="height: 350px;"></div>
+  </div>
+  <div class="modal-footer" style="border-top-style: none; border-top-width: medium;" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6" style="text-align: right;">
+          <button id="UNQ_sdeExtButtonCancel" type="button" class="btn btn-outline-danger btn-large rounded-pill" (click)="delete()"
+            tabindex="0">削除</button>
+        </div>
+        <div class="col-md-6" style="text-align: left;">
+          <button id="UNQ_sdeExtButtonOk" type="button" class="btn btn-success btn-large rounded-pill" (click)="edit()" tabindex="0">編集</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

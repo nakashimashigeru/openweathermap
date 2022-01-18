@@ -1,0 +1,17 @@
+::ng-deep app-header {
+  * {
+    box-sizing: border-box;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    text-decoration: none;
+    color: #333333;
+  }
+
+  .header {
+    padding: 4px;
+    background-color: #29088A;
+  }
+
+  .header span {
+    color: #FFF;
+  }
+}

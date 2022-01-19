@@ -1,0 +1,57 @@
+/**
+* @example
+*  @include get-spacer(map-get($spacers, margin), map-get($size, sl), map-get($size, md), map-get($size, sl), map-get($size, sl));
+*  @include get-spacer(map-get($spacers, margin), map-get($size, sl), map-get($size, md));
+*  @include get-spacer(map-get($spacers, padding), map-get($size, md));
+**/
+@mixin get-spacer($property, $top, $right: 0, $bottom: 0, $left: 0) {
+  $spacer-list: (0, 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, auto);
+
+  @if $property !=
+    map-get($spacers, margin) and
+    $property !=
+    map-get($spacers, padding)
+  {
+    @error "$propertyの値が正しくありません。 'map-get($spacer, margin)' もしくは 'map-get($spacer, padding)' を指定してください。";
+  }
+
+  @if $right == 0 and $bottom == 0 and $left == 0 {
+    #{$property}: nth($spacer-list, $top);
+  } @else if $bottom == 0 and $left == 0 {
+    #{$property}: nth($spacer-list, $top) nth($spacer-list, $right);
+  } @else {
+    #{$property}: nth($spacer-list, $top)
+      nth($spacer-list, $right)
+      nth($spacer-list, $bottom)
+      nth($spacer-list, $left);
+  }
+}
+
+/**
+* @see
+* https://github.com/angular/flex-layout/wiki/Responsive-API
+**/
+
+$xsmall: "only screen and (max-width: 599px)";
+
+$small: "only screen and (max-width: 959px)";
+
+$medium: "only screen and (min-width: 960px) and (max-width: 1919px)";
+
+$large: "only screen and (min-width: 1920px)";
+
+$small-medium: "only screen and (max-width: 1919px)";
+
+$medium-large: "only screen and (min-width: 959px)";
+
+@mixin host-initialized($display: block) {
+  :host {
+    display: $display;
+    @media #{$small} {
+      @include get-spacer(map-get($spacers, padding), map-get($size, sm));
+    }
+    @media #{$medium-large} {
+      @include get-spacer(map-get($spacers, padding), map-get($size, sb));
+    }
+  }
+}

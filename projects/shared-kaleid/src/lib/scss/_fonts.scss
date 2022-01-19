@@ -1,0 +1,52 @@
+@use 'sass:math';
+
+/**
+* https://material.io/design/typography/the-type-system.html#type-scale
+* @example
+*  @include font(text);
+**/
+@mixin font($size: page-title, $rem: 2rem) {
+  $font-size: (
+    h1: math.div(45, 16),
+    h2: math.div(40, 16),
+    h3: math.div(36, 16),
+    h4: math.div(26, 16),
+    h5: math.div(22, 16),
+    h6: math.div(20, 16),
+    h7: math.div(18, 16),
+    blog: math.div(18, 16),
+    page-title: math.div(30, 16),
+    accent: math.div(16, 16),
+    text: math.div(16, 16),
+    small: math.div(14, 16),
+    reticence-bold: math.div(12, 16),
+    reticence: math.div(12, 16),
+  );
+
+  $font-weight: (
+    h1: bold,
+    h2: bold,
+    h3: bold,
+    h4: bold,
+    h5: bold,
+    h6: bold,
+    h7: bold,
+    blog: 300,
+    page-title: bold,
+    accent: bold,
+    text: normal,
+    small: normal,
+    reticence-bold: bold,
+    reticence: 300,
+  );
+
+  $type-size: map-get($font-size, $size);
+  $type-weight: map-get($font-weight, $size);
+  @if ($type-size == null) {
+    @error "get-fonts()のパラメーターが正しくありません。";
+  }
+
+  font-size: #{$type-size}rem;
+  font-weight: $type-weight;
+  line-height: $rem;
+}

@@ -8,7 +8,14 @@
       <span>都市名を入力して下さい</span>
     </ng-template>
   </div>
-  <input #prefectures id="prefectures" type="text" pInputText formControlName="name" (keydown.enter)="onKeydown($event)" placeholder="例：東京都">
+  <input
+    #prefectures
+    id="prefectures"
+    type="text"
+    pInputText
+    [formControlName]="cityAddCtrl.NAME"
+    (keydown.enter)="onKeydown($event)"
+    placeholder="例：東京都">
   <button pButton type="submit" label="追加" class="button" [disabled]="cityAddForm.invalid"></button>
   <button pButton type="button" label="キャンセル" class="button ui-button-secondary" routerLink="/dashboard"></button>
 </form>

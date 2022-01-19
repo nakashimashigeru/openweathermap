@@ -29,6 +29,9 @@ import { LeafletService } from "./service/leaflet.service";
 import { CityService } from "./service/city.service";
 import { LoggerService } from "./service/logger.service";
 import { SharedKaleidModule } from "projects/shared-kaleid/src/lib/shared-kaleid.module";
+import { ConfirmDialogComponent } from './dumb/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { SharedKaleidModule } from "projects/shared-kaleid/src/lib/shared-kaleid
     MenuComponent,
     MapDialogComponent,
     ErrorDialogComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,8 @@ import { SharedKaleidModule } from "projects/shared-kaleid/src/lib/shared-kaleid
     A11yModule,
     ModalModule.forRoot(),
     SharedKaleidModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   providers: [
     BsModalRef,

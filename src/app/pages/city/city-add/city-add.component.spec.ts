@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { BsModalService, ModalModule } from "ngx-bootstrap/modal";
 import { AngularFireModule } from '@angular/fire';
+import { MatDialogModule } from "@angular/material/dialog";
 
 import { CityAddComponent } from "./city-add.component";
 import { environment } from "src/environments/environment";
@@ -21,7 +22,8 @@ describe("CityAddComponent", () => {
         RouterModule.forRoot([]),
         ModalModule.forRoot(),
         AngularFireModule,
-        AngularFireModule.initializeApp(environment.config)
+        AngularFireModule.initializeApp(environment.config),
+        MatDialogModule
       ],
       providers: [BsModalService],
     }).compileComponents();

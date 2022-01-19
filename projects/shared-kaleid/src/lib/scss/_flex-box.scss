@@ -1,0 +1,35 @@
+@mixin flex-row(
+  $justify: flex-start,
+  $align: flex-start,
+  $wrap: nowrap,
+  $reverse: false,
+  $gap: 8px
+) {
+  display: flex;
+  @if ($reverse) {
+    flex-direction: row-reverse;
+  } @else {
+    flex-direction: row;
+  }
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+@mixin flex-column(
+  $justify: flex-start,
+  $align: flex-start,
+  $wrap: nowrap,
+  $reverse: false
+) {
+  display: flex;
+  @if ($reverse) {
+    flex-direction: column-reverse;
+  } @else {
+    flex-direction: column;
+  }
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}

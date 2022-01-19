@@ -7,6 +7,8 @@ import { LoggerService } from "../../../service/logger.service";
 import { CommonModel } from "../../../model/common.model";
 import { validateEnterOnlySpaces } from "../../../shared/custom.validators";
 import { City } from "../../../interface/city.model";
+import { MatDialog } from "@angular/material/dialog";
+import { ConfirmDialogComponent, ConfirmDialogState } from "../../../dumb/confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: "app-city-add",
@@ -17,8 +19,12 @@ export class CityAddComponent implements OnInit {
   /** 都市名 テキストボックス */
   @ViewChild("prefectures", { read: ElementRef, static: true }) prefectures: ElementRef<HTMLInputElement>;
 
+  public readonly cityAddCtrl = {
+    NAME: 'name'
+  };
+
   public readonly cityAddForm: FormGroup = this.formBuilder.group({
-    name: ["", [Validators.required, validateEnterOnlySpaces]],
+    [this.cityAddCtrl.NAME]: ["", [Validators.required, validateEnterOnlySpaces]],
   });
 
   /**
@@ -35,6 +41,7 @@ export class CityAddComponent implements OnInit {
     private messageDialogService: MessageDialogService,
     private service: CityService,
     private loggerService: LoggerService,
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit() {
@@ -54,9 +61,25 @@ export class CityAddComponent implements OnInit {
     tempMin: "",
     timeZone: "",
     };
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '900px',
+      autoFocus: false,
+      disableClose: true,
+      data: Object.values(this.cityAddCtrl).reduce(
+        (pre, key) => ({
+          ...pre,
+          [key]: this.cityAddForm.value[key],
+        }),
+        {} as ConfirmDialogState
+      )
+    });
 
-    // サービスの都市登録メソッドに渡す
-    this.service.addCity(city, null);
+    dialogRef.afterClosed().subscribe((result) => {
+      if(result) {
+        // サービスの都市登録メソッドに渡す
+        this.service.addCity(city, null);
+      }
+    });
   }
 
   public onKeydown(event) {

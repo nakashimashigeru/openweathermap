@@ -1,5 +1,63 @@
+@import "~@angular/material/theming";
+
+// 青
+$blue: (
+  50: #0e0d6a,
+  100: #0e0d6a,
+  200: #0e0d6a,
+  300: #0e0d6a,
+  400: #0e0d6a,
+  500: #0e0d6a,
+  600: #0e0d6a,
+  700: #0e0d6a,
+  800: #0e0d6a,
+  900: #0e0d6a,
+  A100: #0e0d6a,
+  A200: #0e0d6a,
+  A400: #0e0d6a,
+  A700: #0e0d6a,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  ),
+);
+
+// 黒
 $black: #2c2c2c;
-$white: #ffffff;
+// 白
+$white: white;
+// 標準フォント（黒）
+$on-black: mat-color($mat-blue-gray, 700);
+// 標準フォント（白）
+$on-white: mat-color($mat-gray, A100);
+// 正常
+$success: mat-color($mat-green, 600);
+$on-success: $on-white;
+// 警告
+$warn: mat-color($mat-amber, 300);
+$on-warn: $on-black;
+$warn-variant-light: mat-color($mat-amber, 200);
+// 異常
+$failure: mat-color($mat-red, 600);
+$on-failure: $on-white;
+// 非活性
+$disabled: mat-color($mat-gray, 300);
+$on-disabled: mat-color($mat-gray, 200);
+// コンテンツ背景色
+$surface: mat-color($mat-gray, A100);
+$on-surface: $on-black;
 
 $color-map: (
   brand: (
@@ -34,14 +92,22 @@ $color-map: (
 
 @mixin background-color($background, $alpha: 1) {
   color: map-get(map-get($color-map, $background), on);
-  background-color: rgba(map-get(map-get($color-map, $background), color), $alpha);
+  background-color: rgba(
+    map-get(map-get($color-map, $background), color),
+    $alpha
+  );
 }
 
 @mixin border-color($color, $px: 1px, $style: solid, $suffix: null, $alpha: 1) {
-  @if $suffix == top or $suffix == bottom or $suffix == left or $suffix == right {
-    border-#{$suffix}: $px $style rgba(map-get(map-get($color-map, $color), color), $alpha);
+  @if $suffix == top or $suffix == bottom or $suffix == left or $suffix == right
+  {
+    border-#{$suffix}: $px
+      $style
+      rgba(map-get(map-get($color-map, $color), color), $alpha);
   } @else if $suffix == null {
-    border: $px $style rgba(map-get(map-get($color-map, $color), color), $alpha);
+    border: $px
+      $style
+      rgba(map-get(map-get($color-map, $color), color), $alpha);
   }
 }
 

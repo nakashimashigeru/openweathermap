@@ -60,10 +60,10 @@ export class CityService {
         };
 
         if (id === null) {
-          const cityInfo: City = {};
+          const city: City = {};
           this.db
             .collection("cities")
-            .add(cityInfo)
+            .add(city)
             .then((docRef) => {
               // ドキュメントID
               const documentId = docRef.id;

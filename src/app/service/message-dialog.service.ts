@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { BsModalService } from "ngx-bootstrap/modal";
-import { InputModel } from "../model/input.model";
 import { OutputModel } from "../model/output.model";
 import { MapDialogComponent } from "../modal/map-dialog/map-dialog.component";
 import { ErrorDialogComponent } from "../modal/error-dialog/error-dialog.component";
+import { DialogState } from "../interface/dialog.model";
 
 export enum DialogSize {
   /** ダイアログサイズ 小 */
@@ -80,16 +80,17 @@ export class MessageDialogService {
   ): void {
     const classList = dialogSize + " modal-dialog modal-dialog-centered";
 
-    const inputData = new InputModel();
-    inputData.documentId = documentId;
-    inputData.name = name;
-    inputData.code = code;
-    inputData.message = message;
+    const dialogState:DialogState = {
+      documentId,
+      name,
+      code,
+      message,
+    };
     const initialState = {
-      documentId: inputData.documentId,
-      name: inputData.name,
-      code: inputData.code,
-      message: inputData.message,
+      documentId: dialogState.documentId,
+      name: dialogState.name,
+      code: dialogState.code,
+      message: dialogState.message,
     };
 
     this.modalService.show(content, {

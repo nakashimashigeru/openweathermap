@@ -13,7 +13,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { MessageDialogService, DialogResult, DialogSize } from "../../../service/message-dialog.service";
 import { CityService } from "../../../service/city.service";
 import { LoggerService } from "../../../service/logger.service";
-import { OutputModel } from "../../../model/output.model";
+import { CommonModel } from "../../../model/common.model";
 import { validateEnterOnlySpaces } from "../../../shared/custom.validators";
 import { City } from "../../../interface/city.model";
 
@@ -51,7 +51,7 @@ export class CityEditComponent implements OnInit, AfterContentChecked {
   ) {}
 
   ngOnInit() {
-    OutputModel.setCityEdit(this);
+    CommonModel.setCityEdit(this);
 
     const id = this.activatedroute.snapshot.paramMap.get("id");
     this.db

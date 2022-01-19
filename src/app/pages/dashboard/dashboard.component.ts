@@ -4,7 +4,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { MessageDialogService, DialogResult, DialogSize } from "../../service/message-dialog.service";
 import { CityService } from "../../service/city.service";
 import { LoggerService } from "../../service/logger.service";
-import { OutputModel } from "../../model/output.model";
+import { CommonModel } from "../../model/common.model";
 import { City } from "../../interface/city.model";
 import _ from "lodash";
 
@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    OutputModel.setDashboard(this);
+    CommonModel.setDashboard(this);
 
     this.db
       .collection("cities")

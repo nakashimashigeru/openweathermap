@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { BsModalService } from "ngx-bootstrap/modal";
-import { OutputModel } from "../model/output.model";
 import { MapDialogComponent } from "../modal/map-dialog/map-dialog.component";
 import { ErrorDialogComponent } from "../modal/error-dialog/error-dialog.component";
 import { DialogState } from "../interface/dialog.model";
+import { CommonModel } from "../model/common.model";
 
 export enum DialogSize {
   /** ダイアログサイズ 小 */
@@ -103,7 +103,7 @@ export class MessageDialogService {
 
     const newSubscriber = this.modalService.onHide.subscribe(() => {
       // コールバック関数有りの場合
-      callBack(OutputModel.getResult());
+      callBack(CommonModel.getResult());
       newSubscriber.unsubscribe();
     });
   }

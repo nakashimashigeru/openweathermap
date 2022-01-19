@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { BsModalRef } from "ngx-bootstrap/modal";
-import { OutputModel } from "../../model/output.model";
+import { CommonModel } from "../../model/common.model";
 
 @Component({
   selector: "app-lib-error-dialog",
@@ -27,21 +27,21 @@ export class ErrorDialogComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // 戻り値 初期化
-    OutputModel.setResult("");
+    CommonModel.setResult("");
 
-    if (OutputModel.getCityAdd() !== undefined) {
-      OutputModel.getCityAdd().cityAddForm.controls["name"].setValue("");
-      OutputModel.getCityAdd().prefectures.nativeElement.focus();
+    if (CommonModel.getCityAdd() !== undefined) {
+      CommonModel.getCityAdd().cityAddForm.controls["name"].setValue("");
+      CommonModel.getCityAdd().prefectures.nativeElement.focus();
     }
-    if (OutputModel.getCityEdit() !== undefined) {
-      OutputModel.getCityEdit().cityEditForm.controls["name"].setValue("");
-      OutputModel.getCityEdit().prefectures.nativeElement.focus();
+    if (CommonModel.getCityEdit() !== undefined) {
+      CommonModel.getCityEdit().cityEditForm.controls["name"].setValue("");
+      CommonModel.getCityEdit().prefectures.nativeElement.focus();
     }
   }
 
   public close(): void {
     // 戻り値 閉
-    OutputModel.setResult("閉");
+    CommonModel.setResult("閉");
     // ダイアログ画面を閉じる
     this.bsModalRef.hide();
   }

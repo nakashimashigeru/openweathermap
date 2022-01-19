@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MessageDialogService, DialogResult, DialogSize } from "../../../service/message-dialog.service";
 import { CityService } from "../../../service/city.service";
 import { LoggerService } from "../../../service/logger.service";
-import { OutputModel } from "../../../model/output.model";
+import { CommonModel } from "../../../model/common.model";
 import { validateEnterOnlySpaces } from "../../../shared/custom.validators";
 import { City } from "../../../interface/city.model";
 
@@ -38,7 +38,7 @@ export class CityAddComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    OutputModel.setCityAdd(this);
+    CommonModel.setCityAdd(this);
 
     this.prefectures.nativeElement.focus();
   }

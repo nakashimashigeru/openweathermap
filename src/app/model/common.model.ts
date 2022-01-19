@@ -3,7 +3,7 @@ import { CityAddComponent } from "../pages/city/city-add/city-add.component";
 import { CityEditComponent } from "../pages/city/city-edit/city-edit.component";
 
 // @dynamic
-export class OutputModel {
+export class CommonModel {
   /** 戻り値 */
   private static result = "";
   /** ダッシュボード */

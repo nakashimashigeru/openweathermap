@@ -5,7 +5,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { LeafletService } from "../../service/leaflet.service";
 import { CityService } from "../../service/city.service";
 import { LoggerService } from "../../service/logger.service";
-import { OutputModel } from "../../model/output.model";
+import { CommonModel } from "../../model/common.model";
 import { City } from "../../interface/city.model";
 
 @Component({
@@ -61,12 +61,12 @@ export class MapDialogComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // 戻り値 初期化
-    OutputModel.setResult("");
+    CommonModel.setResult("");
     // ドキュメントID 初期化
     this.documentId = "";
     // 初期化
-    if (OutputModel.getDashboard() !== undefined) {
-      OutputModel.getDashboard().selectedCity = [];
+    if (CommonModel.getDashboard() !== undefined) {
+      CommonModel.getDashboard().selectedCity = [];
     }
   }
 
@@ -75,7 +75,7 @@ export class MapDialogComponent implements OnInit, OnDestroy {
    */
   public close(): void {
     // 戻り値 閉
-    OutputModel.setResult("閉");
+    CommonModel.setResult("閉");
     // ダイアログ画面を閉じる
     this.bsModalRef.hide();
   }
@@ -85,7 +85,7 @@ export class MapDialogComponent implements OnInit, OnDestroy {
    */
   public edit(): void {
     // 戻り値 編集
-    OutputModel.setResult("編集");
+    CommonModel.setResult("編集");
     // 編集画面に遷移する
     this.editCity(this.documentId);
     // ダイアログ画面を閉じる
@@ -97,7 +97,7 @@ export class MapDialogComponent implements OnInit, OnDestroy {
    */
   public delete(): void {
     // 戻り値 削除
-    OutputModel.setResult("削除");
+    CommonModel.setResult("削除");
     // 都市をテーブルから削除する
     this.deleteCity(this.documentId);
     // ダイアログ画面を閉じる

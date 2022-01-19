@@ -4,8 +4,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { LoggerService } from "./logger.service";
-import { OutputModel } from "../model/output.model";
 import { City } from "../interface/city.model";
+import { CommonModel } from "../model/common.model";
 
 @Injectable({
   providedIn: "root",
@@ -123,10 +123,10 @@ export class CityService {
       (err) => {
         if (id === null) {
           // モーダル画面を表示
-          OutputModel.getCityAdd().openErrorDialogClick(err.error.cod, err.error.message);
+          CommonModel.getCityAdd().openErrorDialogClick(err.error.cod, err.error.message);
         } else {
           // モーダル画面を表示
-          OutputModel.getCityEdit().openErrorDialogClick(err.error.cod, err.error.message);
+          CommonModel.getCityEdit().openErrorDialogClick(err.error.cod, err.error.message);
         }
         this.loggerService.error(err);
       },

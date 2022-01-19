@@ -1,4 +1,4 @@
-export class City {
+export interface City {
   /** ドキュメントID */
   documentId?: string;
   /** 都市名 */
@@ -18,8 +18,10 @@ export class City {
   /** 天気アイコン */
   icon?: string;
   /** 緯度経度 */
-  location?: {
-    lat: number;
-    lon: number;
-  };
+  location?: Location;
+}
+
+export interface Location {
+  lat: number;
+  lon: number;
 }

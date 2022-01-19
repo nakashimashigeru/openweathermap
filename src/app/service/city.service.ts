@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { LoggerService } from "./logger.service";
 import { OutputModel } from "../model/output.model";
-import { City } from "../class/city";
+import { City } from "../interface/city.model";
 
 @Injectable({
   providedIn: "root",
@@ -32,14 +32,7 @@ export class CityService {
   ) {}
 
   public addCity(city: City, id: string): void {
-    // openweathermapのAPIを呼び出す処理
-    const apiEndPoint: string =
-      this.environment.baseUrl +
-      "weather?q=" +
-      city.name +
-      "&appid=" +
-      this.environment.appId +
-      "&units=metric&lang=ja";
+    const apiEndPoint: string = this.callOpenWeatherMapAPI(city);
 
     this.getWeatheritemsbyCity(apiEndPoint).subscribe(
       (res) => {
@@ -74,40 +67,57 @@ export class CityService {
             .then((docRef) => {
               // ドキュメントID
               const documentId = docRef.id;
-              const addCityInfo: City = {
-                documentId,
-                name,
-                weather,
-                temp,
-                humidity,
-                tempMax,
-                tempMin,
-                timeZone,
-                icon,
-                location,
-              };
-              this.db.collection("cities").doc(docRef.id).set(addCityInfo);
-            });
-          // ダッシュボードに遷移
-          this.router.navigate(["dashboard"]);
+              this.db
+                .collection("cities")
+                .doc(docRef.id)
+                .set({
+                  documentId,
+                  name,
+                  weather,
+                  temp,
+                  humidity,
+                  tempMax,
+                  tempMin,
+                  timeZone,
+                  icon,
+                  location,
+                });
+              this.loggerService.trace("Document Successfully Created");
+              // ダッシュボードに遷移
+              this.router.navigate(["dashboard"]);
+            },
+            (err) => {
+                this.loggerService.error(err);
+            },
+          );
         } else {
           // ドキュメントID
           const documentId = id;
-          const updateCityInfo: City = {
-            documentId,
-            name,
-            weather,
-            temp,
-            humidity,
-            tempMax,
-            tempMin,
-            timeZone,
-            icon,
-            location,
-          };
-          this.db.collection("cities").doc(id).set(updateCityInfo);
-          // ダッシュボードに遷移
-          this.router.navigate(["dashboard"]);
+          this.db
+            .collection("cities")
+            .doc(id)
+            .update({
+              documentId,
+              name,
+              weather,
+              temp,
+              humidity,
+              tempMax,
+              tempMin,
+              timeZone,
+              icon,
+              location,
+            })
+            .then(
+              () => {
+                this.loggerService.trace("Document Successfully Updated");
+                // ダッシュボードに遷移
+                this.router.navigate(["dashboard"]);
+              },
+              (err) => {
+                this.loggerService.error(err);
+              },
+            );
         }
       },
       (err) => {
@@ -129,5 +139,19 @@ export class CityService {
    */
   private getWeatheritemsbyCity(apiEndPoint: string): Observable<any> {
     return this.http.get(apiEndPoint);
+  }
+
+  /**
+   * OpenWeatherMap APIを呼ぶ
+   */
+  private callOpenWeatherMapAPI(city: City): string {
+    const apiEndPoint: string =
+      this.environment.baseUrl +
+      "weather?q=" +
+      city.name +
+      "&appid=" +
+      this.environment.appId +
+      "&units=metric&lang=ja";
+    return apiEndPoint;
   }
 }

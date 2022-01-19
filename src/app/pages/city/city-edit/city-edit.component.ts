@@ -15,7 +15,7 @@ import { CityService } from "../../../service/city.service";
 import { LoggerService } from "../../../service/logger.service";
 import { OutputModel } from "../../../model/output.model";
 import { validateEnterOnlySpaces } from "../../../shared/custom.validators";
-import { City } from "../../../class/city";
+import { City } from "../../../interface/city.model";
 
 @Component({
   selector: "app-city-edit",
@@ -76,17 +76,16 @@ export class CityEditComponent implements OnInit, AfterContentChecked {
   }
 
   public onSubmit(): void {
-    // Cityクラスのインスタンスを生成して名前を指定
-    const city: City = new City();
-    city.name = this.cityEditForm.controls["name"].value;
-    // 初期化
-    city.weather = "";
-    city.icon = "";
-    city.temp = "";
-    city.humidity = "";
-    city.tempMax = "";
-    city.tempMin = "";
-    city.timeZone = "";
+    const city: City = {
+      name: this.cityEditForm.controls["name"].value,
+      weather: "",
+      icon: "",
+      temp: "",
+      humidity: "",
+      tempMax: "",
+      tempMin: "",
+      timeZone: "",
+    };
 
     const id = this.activatedroute.snapshot.paramMap.get("id");
     // サービスの都市登録メソッドに渡す

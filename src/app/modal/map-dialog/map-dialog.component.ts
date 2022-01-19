@@ -6,7 +6,7 @@ import { LeafletService } from "../../service/leaflet.service";
 import { CityService } from "../../service/city.service";
 import { LoggerService } from "../../service/logger.service";
 import { OutputModel } from "../../model/output.model";
-import { City } from "../../class/city";
+import { City } from "../../interface/city.model";
 
 @Component({
   selector: "app-lib-map-dialog",
@@ -137,7 +137,7 @@ export class MapDialogComponent implements OnInit, OnDestroy {
       .doc(documentId)
       .delete()
       .then(() => {
-        this.loggerService.trace("Document successfully deleted!");
+        this.loggerService.trace("Document Successfully Deleted");
       })
       .catch((error) => {
         this.loggerService.error(error);

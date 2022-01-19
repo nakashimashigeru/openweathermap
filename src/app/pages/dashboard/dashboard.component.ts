@@ -5,7 +5,7 @@ import { MessageDialogService, DialogResult, DialogSize } from "../../service/me
 import { CityService } from "../../service/city.service";
 import { LoggerService } from "../../service/logger.service";
 import { OutputModel } from "../../model/output.model";
-import { City } from "../../class/city";
+import { City } from "../../interface/city.model";
 import _ from "lodash";
 
 @Component({
